@@ -159,7 +159,7 @@ public partial class MainWindow : Window
                 {
                     helpSessions = helpSessions.Where(x => x != session).ToList();
                     ApplyTabs();
-                    session = helpSessions.FirstOrDefault();
+                    session = helpSessions.FirstOrDefault(x => x.IsSelected) ?? helpSessions.FirstOrDefault();
                     if (session != null)
                     {
                         GoToHelpSession(session);
