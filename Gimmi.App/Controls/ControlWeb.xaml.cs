@@ -31,6 +31,14 @@ public partial class ControlWeb : UserControl
                 {
                     webView.Focus();
                 };
+                webView.CoreWebView2.PermissionRequested += (sender, args) =>
+                {
+                    if (args.PermissionKind == CoreWebView2PermissionKind.Microphone)
+                    {
+                        args.State = CoreWebView2PermissionState.Allow;
+                        args.Handled = true;
+                    }
+                };
             };
         });
     }
